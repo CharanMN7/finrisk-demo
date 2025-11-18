@@ -57,6 +57,15 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <Button
+        asChild
+        className="absolute top-4 right-4 z-[100]"
+        variant="outline"
+      >
+        <Link href="/login">
+          Login
+        </Link>
+      </Button>
       {/* Hero Section */}
       <section className="relative border-b bg-gradient-to-b from-blue-50 to-white dark:from-blue-950/20 dark:to-background">
         <div className="container mx-auto px-4 py-20">

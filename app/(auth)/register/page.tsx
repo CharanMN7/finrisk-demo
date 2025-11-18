@@ -13,7 +13,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { PasswordInput } from '@/components/ui/password-input';
-import { signup, signInWithGoogle } from '@/app/actions/auth';
+import { signup } from '@/app/actions/auth';
 
 // Define stronger validation schema using Zod
 const formSchema = z
@@ -159,11 +159,11 @@ export default function RegisterPreview() {
                 <span className="w-full border-t" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-background px-2 text-muted-foreground">Or continue with</span>
+                {/* <span className="bg-background px-2 text-muted-foreground">Or continue with</span> */}
               </div>
             </div>
 
-            <Button
+            {/* <Button
               variant="outline"
               className="mt-4 w-full flex items-center justify-center gap-2"
               onClick={async () => {
@@ -195,7 +195,7 @@ export default function RegisterPreview() {
                 <path d="M1 1h22v22H1z" fill="none" />
               </svg>
               Sign in with Google
-            </Button>
+              </Button> */}
           </div>
 
           <div className="mt-4 text-center text-sm">

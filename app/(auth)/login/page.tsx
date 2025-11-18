@@ -8,7 +8,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 import { createClient } from '@/utils/supabase/client';
-import { login, signInWithGoogle } from '@/app/actions/auth';
+import { login } from '@/app/actions/auth';
 
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
@@ -156,11 +156,11 @@ export default function LoginPreview() {
                 <span className="w-full border-t" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-background px-2 text-muted-foreground">Or continue with</span>
+                {/* <span className="bg-background px-2 text-muted-foreground">Or continue with</span> */}
               </div>
             </div>
 
-            <Button
+            {/* <Button
               variant="outline"
               className="mt-4 w-full flex items-center justify-center gap-2"
               onClick={async () => {
@@ -192,7 +192,7 @@ export default function LoginPreview() {
                 <path d="M1 1h22v22H1z" fill="none" />
               </svg>
               Sign in with Google
-            </Button>
+            </Button> */}
           </div>
 
           <div className="mt-4 text-center text-sm">
