@@ -6,8 +6,8 @@ import { ThemeProvider } from '@/components/theme-provider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'devsForFun opensource frontend template',
-  description: 'devsForFun opensource frontend template',
+  title: 'Infracomply',
+  description: '',
   icons: {
     icon: '/favicon.ico',
   },
