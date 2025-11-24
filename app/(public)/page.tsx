@@ -277,7 +277,7 @@ export default function LandingPage() {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-20 border-b">
+      {/* <section className="py-20 border-b">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-4xl font-bold text-center mb-12">Transparent Pricing Aligned to Your Portfolio Size</h2>
@@ -330,7 +330,7 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* RBI Mandate Explainer */}
       <section className="py-20 border-b bg-gray-50 dark:bg-gray-900/50">

@@ -7,11 +7,19 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 import { FilterSidebar } from '@/components/infracomply/filter-sidebar';
 import { RiskBadge } from '@/components/infracomply/risk-badge';
 import { SectorIcon } from '@/components/infracomply/sector-icon';
 import { getProjects } from '@/app/actions/projects';
-import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Search, ChevronLeft, ChevronRight, Upload, Plus } from 'lucide-react';
 import { type Project } from '@/app/actions/projects';
 
 export default function ProjectsPage() {
@@ -26,7 +34,8 @@ export default function ProjectsPage() {
     risk_tier: [],
     status: [],
   });
-  
+  const [createProjectOpen, setCreateProjectOpen] = useState(false);
+
   const limit = 10;
 
   useEffect(() => {
@@ -45,7 +54,7 @@ export default function ProjectsPage() {
       page,
       limit
     );
-    
+
     if (result.data) {
       setProjects(result.data);
       setTotalCount(result.count);
@@ -105,11 +114,72 @@ export default function ProjectsPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold">Projects</h1>
-        <p className="text-muted-foreground">
-          Manage and monitor your infrastructure and CRE project portfolio
-        </p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold">Projects</h1>
+          <p className="text-muted-foreground">
+            Manage and monitor your infrastructure and CRE project portfolio
+          </p>
+        </div>
+        <Dialog open={createProjectOpen} onOpenChange={setCreateProjectOpen}>
+          <DialogTrigger asChild>
+            <Button>
+              <Plus className="mr-2 h-4 w-4" />
+              Create Project
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="max-w-2xl">
+            <DialogHeader>
+              <DialogTitle>Create New Project</DialogTitle>
+              <DialogDescription>
+                Upload project data in bulk or enter project details manually
+              </DialogDescription>
+            </DialogHeader>
+            <div className="space-y-6">
+              {/* Placeholder Bulk Upload Component */}
+              <div className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-12">
+                <div className="flex flex-col items-center justify-center text-center space-y-4">
+                  <div className="rounded-full bg-primary/10 p-4">
+                    <Upload className="h-8 w-8 text-primary" />
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-semibold">Bulk Upload Projects</h3>
+                    <p className="text-sm text-muted-foreground max-w-sm">
+                      Upload a CSV or Excel file with your project data to quickly import multiple projects at once.
+                    </p>
+                  </div>
+                  <div className="flex gap-3">
+                    <Button variant="outline" disabled>
+                      <Upload className="mr-2 h-4 w-4" />
+                      Choose File
+                    </Button>
+                    <Button variant="outline" disabled>
+                      Download Template
+                    </Button>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    Supported formats: CSV, XLSX (Max 10MB)
+                  </p>
+                </div>
+              </div>
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <span className="w-full border-t" />
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-background px-2 text-muted-foreground">
+                    Or
+                  </span>
+                </div>
+              </div>
+              <div className="flex justify-center">
+                <Button variant="outline" disabled className="w-full">
+                  Enter Project Details Manually
+                </Button>
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
 
       <div className="flex gap-6">
